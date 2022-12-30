@@ -8,7 +8,15 @@
  *
  */
 
-.dino-outer:first-of-type {
+.wp-block-dinogame-dinogame {
+	position: relative;
+}
+
+.hidden {
+	display: none;
+}
+
+.dino-game-wrapper:first-of-type {
 	display: block;
 	border: 1px solid #535353;
 	margin: 1em auto;
@@ -21,7 +29,7 @@
 	display: inline-block;
 }
 
-.dino-outer .dino-inner {
+.dino-game-wrapper .dino-inner {
 	color: #2b2b2b;
 	line-height: 0;
 	font-size: 0;
@@ -30,22 +38,21 @@
 	width: 100%;
 }
 
-.dino-outer .dino-container {
-
-	max-width: 600px;
+.dino-game-wrapper .dino-container {
+	max-width: 100%;
 	overflow: hidden;
 	width: 100%;
 }
 
-.dino-outer .dino-canvas {
-	max-width: 600px;
+.dino-game-wrapper .dino-canvas {
+	max-width: 100%;
 	opacity: 1;
 	overflow: hidden;
 	z-index: 2;
 	position: static;
 }
 
-.dino-outer .controller {
+.dino-game-wrapper .controller {
 	background: rgba(247, 247, 247, .1);
 	left: 0;
 	width: 100vw;

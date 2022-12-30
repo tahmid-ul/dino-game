@@ -81,10 +81,10 @@
 	/**
 	 * Function to check if element is visible.
 	 */
-	function isElementInViewport (el) {
-		var rect = el[0].getBoundingClientRect();
-		return (rect.top>-1 && rect.bottom <= jQuery(window).height());
-	}
+	// function isElementInViewport (el) {
+	// 	var rect = el[0].getBoundingClientRect();
+	// 	return (rect.top>-1 && rect.bottom <= jQuery(window).height());
+	// }
 
 	/**
 	 * Default game width.
@@ -2728,8 +2728,8 @@
 	};
 })();
 
-function startupDinosaurGame() {
-	var rect = document.getElementById('dino-outer').getBoundingClientRect();
+/*function startupDinosaurGame() {
+	var rect = document.getElementById('dino-game-wrapper').getBoundingClientRect();
 	if (rect.top>-1 && rect.bottom <= jQuery(window).height()) {
 		new Runner('.dino-inner');
 		document.removeEventListener('scroll', startupDinosaurGame);
@@ -2740,3 +2740,49 @@ function startupDinosaurGame() {
 document.addEventListener('DOMContentLoaded', startupDinosaurGame);
 document.addEventListener('scroll', startupDinosaurGame);
 document.addEventListener('resize', startupDinosaurGame);
+*/
+
+function onDocumentLoad() {
+
+	// var dino_speed = parseInt( document.querySelector('.wp-block-dinogame-dinogame').getAttribute('data-speed') );
+	// var mute_audio = document.querySelector('.wp-block-dinogame-dinogame').getAttribute('data-mute-audio') == 'true';
+
+	var dino_speed = 6;
+	var mute_audio = true;
+
+	var runnerConfig = {
+		ACCELERATION: 0.001,
+		BG_CLOUD_SPEED: 0.2,
+		BOTTOM_PAD: 10,
+		CLEAR_TIME: 3000,
+		CLOUD_FREQUENCY: 0.5,
+		GAMEOVER_CLEAR_TIME: 750,
+		GAP_COEFFICIENT: 0.6,
+		GRAVITY: 0.6,
+		INITIAL_JUMP_VELOCITY: 12,
+		INVERT_FADE_DURATION: 12000,
+		INVERT_DISTANCE: 700,
+		MAX_BLINK_COUNT: 3,
+		MAX_CLOUDS: 6,
+		MAX_OBSTACLE_LENGTH: 3,
+		MAX_OBSTACLE_DUPLICATION: 2,
+		MAX_SPEED: 20,
+		MIN_JUMP_HEIGHT: 35,
+		MOBILE_SPEED_COEFFICIENT: 1.2,
+		RESOURCE_TEMPLATE_ID: 'audio-resources',
+		SPEED: dino_speed,
+		SPEED_DROP_COEFFICIENT: 3,
+		MUTE_AUDIO: mute_audio
+	}
+
+	new Runner('.dino-game-wrapper', runnerConfig);
+}
+
+document.addEventListener('DOMContentLoaded', onDocumentLoad);
+
+// Disable Scrolling for space bar
+window.addEventListener('keydown', function(e) {
+	if(e.keyCode == 32 && e.target == document.body) {
+		e.preventDefault();
+	}
+});

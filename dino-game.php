@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Dino Game
  * Plugin URI: #
- * Description: Add the dinosaur game from Google Chrome to your site using the [dinosaur-game] shortcode.
+ * Description: Add the dinosaur game from Google Chrome to your site using the [dino-game] shortcode.
  * Version: 1.0.0
  * Author: Tahmid ul Karim
  * Author URI: #
@@ -24,12 +24,12 @@ defined( 'DINOGAME_DUPLICATE_CHECK' ) or define( 'DINOGAME_DUPLICATE_CHECK', tru
  * Register CSS and JS used by the game.
  */
 
-add_action( 'wp_enqueue_scripts', 'dinogame_css_js' );
-
-function dinogame_css_js() {
-	wp_register_script( 'dino-game-js', DINO_GAME_DIR_URL . "src/js/dino-game.js", array('jquery'), DINO_GAME_VERSION, true );
+function dinogame_css_js()
+{
+	wp_register_script( 'dino-game-js', DINO_GAME_DIR_URL . "dist/dino.build.js", array('jquery'), DINO_GAME_VERSION, true );
 	wp_register_style( 'dino-game-css', DINO_GAME_DIR_URL . "src/css/style.css", '', DINO_GAME_VERSION );
 }
+add_action( 'wp_enqueue_scripts', 'dinogame_css_js' );
 
 /**
  * Define and register [dino-game] shortcode.
@@ -37,7 +37,8 @@ function dinogame_css_js() {
 
 add_shortcode( 'dino-game', 'register_shortcode' );
 
-function register_shortcode (){
+function register_shortcode()
+{
 	if ( DINOGAME_DUPLICATE_CHECK ) {
 		static $dinogame_run = false;
 		if ( $dinogame_run ) {
@@ -57,11 +58,9 @@ function register_shortcode (){
 		</template>';
 
 	$dinogame_html = '
-    <div id="dino-outer" class="dino-outer">
-        <div class="dino-inner">
-            <div class="dino-icon dino-initial-icon" alt=""></div>
+    <div id="dino-game-wrapper" class="dino-game-wrapper">
+        <div class="dino-icon dino-initial-icon" alt=""></div>
             <div id="dino-game">
-                <span>Press any key to start</span>
                 <img id="dinogame-sprites-1x" 
                     style="display:none;" 
                     class="a3-notlazy disable-lazyload no-lazy no-lazyload skip-lazy" 
@@ -74,7 +73,6 @@ function register_shortcode (){
 	$dinogame_html .= $dinogame_audio . '
     
             </div>
-        </div>
     </div>';
 
 	return $dinogame_html;
@@ -90,14 +88,14 @@ function register_shortcode (){
  *
  * @since 1.0.0
  */
-/*
+
 function dino_editor_assets() {
 	// Scripts.
 	wp_enqueue_script(
 		'dino-basic-script', // Handle.
 		plugins_url( 'dist/block.build.js', __FILE__ ),
 		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor', 'wp-components' ),
-		filemtime( plugin_dir_path( __FILE__ ) . 'src/js/block.js' ),
+		filemtime( plugin_dir_path( __FILE__ ) . 'dist/block.build.js' ),
 		true
 	);
 
@@ -105,7 +103,7 @@ function dino_editor_assets() {
 		'dino-basic-script',
 		'dino_data',
 		array(
-			'cover_image_url' => plugins_url( 'src/img/dino-cover.png', __FILE__ )
+			'cover_image_url' => plugins_url( 'src/img/dinogame-cover.png', __FILE__ )
 		)
 	);
 
@@ -119,13 +117,13 @@ function dino_editor_assets() {
 }
 
 add_action( 'enqueue_block_editor_assets', 'dino_editor_assets' );
-*/
+
 /**
  * Enqueue the block's assets for the frontend.
  *
  * @since 1.0.0
  */
-/*
+
 function dino_frontend_assets() {
 	$id = get_the_id();
 
@@ -149,6 +147,6 @@ function dino_frontend_assets() {
 }
 
 add_action( 'enqueue_block_assets', 'dino_frontend_assets' );
-*/
+
 
 
