@@ -694,7 +694,9 @@
 				if (!this.crashed && (Runner.keycodes.JUMP[e.keyCode] ||
 					e.type == Runner.events.TOUCHSTART)) {
 					if (!this.playing) {
-						this.loadSounds();
+						if( ! this.config.MUTE_AUDIO ) {
+							this.loadSounds();
+						}
 						this.playing = true;
 						this.update();
 						if (window.errorPageController) {
@@ -2743,13 +2745,6 @@ document.addEventListener('resize', startupDinosaurGame);
 */
 
 function onDocumentLoad() {
-
-	// var dino_speed = parseInt( document.querySelector('.wp-block-dinogame-dinogame').getAttribute('data-speed') );
-	// var mute_audio = document.querySelector('.wp-block-dinogame-dinogame').getAttribute('data-mute-audio') == 'true';
-
-	var dino_speed = 6;
-	var mute_audio = true;
-
 	var runnerConfig = {
 		ACCELERATION: 0.001,
 		BG_CLOUD_SPEED: 0.2,
@@ -2770,9 +2765,9 @@ function onDocumentLoad() {
 		MIN_JUMP_HEIGHT: 35,
 		MOBILE_SPEED_COEFFICIENT: 1.2,
 		RESOURCE_TEMPLATE_ID: 'audio-resources',
-		SPEED: dino_speed,
+		SPEED: parseInt( document.querySelector('.dinogame-shortcode, .wp-block-dinogame-dinogame').getAttribute('data-speed') ),
 		SPEED_DROP_COEFFICIENT: 3,
-		MUTE_AUDIO: mute_audio
+		MUTE_AUDIO: document.querySelector('.dinogame-shortcode, .wp-block-dinogame-dinogame').getAttribute('data-mute-audio') === 'true'
 	}
 
 	new Runner('.dino-game-wrapper', runnerConfig);
