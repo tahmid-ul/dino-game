@@ -1,6 +1,6 @@
 === Dino Game - Embed Google Chrome Dinosaur Game in WordPress ===
 Contributors: tahmidulkarim
-Tags: trex, dinosaur, dino, game, chrome
+Tags: trex, dinosaur, dino, game, chrome, shortcode, block, gutenberg
 Requires at least: 5.0.0
 Tested up to: 6.0
 Requires PHP: 5.6
@@ -43,6 +43,3 @@ The game will work on all screen sizes. Users can also play on mobile using touc
 == Changelog ==
 = 1.0.0 =
 * Initial release.
-
-== Upgrade Notice ==
-The latest version is compatible with the previous version, So nothing to worry.
