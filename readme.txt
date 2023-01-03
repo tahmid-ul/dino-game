@@ -13,7 +13,7 @@ Add the dinosaur game from Google Chrome to your site using the Dino Game Gutenb
 == Description ==
 You can add the Google Chrome dinosaur game anywhere within your site using the Shortcode [dino-game] or you can also add it to a Post or Page using the Gutenberg Block.
 
-You can control the Speed of the game and mute the audio. If you use Gutenberg block then there is a direct option to set the speed and mute the audio.
+You can control the speed and mute the audio of the game. If you use Gutenberg block then there is a direct option in the block settings to set the speed and mute the audio.
 
 If you embed the game using shortcode then you can control the speed and audio using attributes in this format - [dino-game speed="8" mute_audio='true']
 
