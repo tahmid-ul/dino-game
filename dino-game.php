@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Dino Game
  * Plugin URI: #
- * Description: Add the dinosaur game from Google Chrome to your site using the [dino-game] shortcode.
+ * Description: Add the dinosaur game from Google Chrome to your site using the [dino-game] shortcode or using the Gutenberg block.
  * Version: 1.0.0
  * Author: Tahmid ul Karim
- * Author URI: #
+ * Author URI: https://github.com/tahmid-ul
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: dinogame
