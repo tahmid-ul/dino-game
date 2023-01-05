@@ -2,7 +2,7 @@
 Contributors: tahmidulkarim
 Tags: trex, dinosaur, dino, game, chrome, shortcode, block, gutenberg
 Requires at least: 5.0.0
-Tested up to: 6.0
+Tested up to: 6.1.1
 Requires PHP: 5.6
 Stable tag: 1.0.0
 License: GPLv2 or later

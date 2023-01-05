@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name: Dino Game
- * Plugin URI: #
+ * Plugin URI: https://wordpress.org/plugins/dino-game
  * Description: Add the dinosaur game from Google Chrome to your site using the [dino-game] shortcode or using the Gutenberg block.
  * Version: 1.0.0
  * Author: Tahmid ul Karim
  * Author URI: https://github.com/tahmid-ul
- * License: GPL2
+ * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: dinogame
  */
@@ -16,6 +16,7 @@ if ( ! defined( 'ABSPATH' ) )  die;
 define('DINO_GAME_VERSION', 1.0);
 define('DINO_GAME_DIR_PATH', plugin_dir_path(__FILE__));
 define('DINO_GAME_DIR_URL', plugin_dir_url( __FILE__ ));
+
 
 defined( 'DINOGAME_DUPLICATE_CHECK' ) or define( 'DINOGAME_DUPLICATE_CHECK', true );
 
@@ -109,7 +110,9 @@ function dino_editor_assets() {
 		'dino-basic-script',
 		'dino_data',
 		array(
-			'cover_image_url' => plugins_url( 'src/img/dinogame-cover.png', __FILE__ )
+			'cover_image_url' => plugins_url( 'src/img/dinogame-cover.png', __FILE__ ),
+			'game_sprites_1x_image_url' => DINO_GAME_DIR_URL . 'src/img/game-sprites-1x.png',
+			'game_sprites_2x_image_url' => DINO_GAME_DIR_URL . 'src/img/game-sprites-2x.png',
 		)
 	);
 
