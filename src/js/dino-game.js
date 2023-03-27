@@ -40,7 +40,7 @@
 		this.distanceMeter = null;
 		this.distanceRan = 0;
 
-		this.highestScore = 0;
+		this.highestScore = window.localStorage['dino-game-high-score'] ? window.localStorage['dino-game-high-score'] : 0;
 
 		this.time = 0;
 		this.runningTime = 0;
@@ -76,6 +76,7 @@
 			this.loadImages();
 		}
 	}
+
 	window['Runner'] = Runner;
 
 	/**
@@ -385,12 +386,10 @@
 			Runner.updateCanvasScaling(this.canvas);
 
 			// Horizon contains clouds, obstacles and the ground.
-			this.horizon = new Horizon(this.canvas, this.spriteDef, this.dimensions,
-				this.config.GAP_COEFFICIENT);
+			this.horizon = new Horizon(this.canvas, this.spriteDef, this.dimensions, this.config.GAP_COEFFICIENT);
 
 			// Distance meter
-			this.distanceMeter = new DistanceMeter(this.canvas,
-				this.spriteDef.TEXT_SPRITE, this.dimensions.WIDTH);
+			this.distanceMeter = new DistanceMeter(this.canvas, this.spriteDef.TEXT_SPRITE, this.dimensions.WIDTH);
 
 			// Draw t-rex
 			this.tRex = new Trex(this.canvas, this.spriteDef.TREX);
@@ -728,7 +727,6 @@
 			}
 		},
 
-
 		/**
 		 * Process key up.
 		 * @param {Event} e
@@ -815,6 +813,9 @@
 			if (this.distanceRan > this.highestScore) {
 				this.highestScore = Math.ceil(this.distanceRan);
 				this.distanceMeter.setHighScore(this.highestScore);
+
+				// Store the high score (pixel value of distance run) in the local storage
+				window.localStorage['dino-game-high-score'] = this.highestScore;
 			}
 
 			// Reset the time clock.
@@ -1944,7 +1945,7 @@
 
 	DistanceMeter.prototype = {
 		/**
-		 * Initialise the distance meter to '00000'.
+		 * Initialise the distance meter to '00000' and if a highscore already exists display that as well
 		 * @param {number} width Canvas width in px.
 		 */
 		init: function (width) {
@@ -1952,6 +1953,7 @@
 
 			this.calcXPos(width);
 			this.maxScore = this.maxScoreUnits;
+
 			for (var i = 0; i < this.maxScoreUnits; i++) {
 				this.draw(i, 0);
 				this.defaultString += '0';
@@ -1959,6 +1961,12 @@
 			}
 
 			this.maxScore = parseInt(maxDistanceStr);
+
+			// If the user already scored a high score before then display that as well
+			if(window.localStorage['dino-game-high-score']) {
+				this.setHighScore(parseInt(window.localStorage['dino-game-high-score']));
+				this.drawHighScore();
+			}
 		},
 
 		/**
@@ -2048,7 +2056,7 @@
 				}
 
 				if (distance > 0) {
-					// Acheivement unlocked
+					// Achievement unlocked
 					if (distance % this.config.ACHIEVEMENT_DISTANCE == 0) {
 						// Flash score and play sound.
 						this.acheivement = true;
@@ -2064,7 +2072,7 @@
 					this.digits = this.defaultString.split('');
 				}
 			} else {
-				// Control flashing of the score on reaching acheivement.
+				// Control flashing of the score on reaching achievement.
 				if (this.flashIterations <= this.config.FLASH_ITERATIONS) {
 					this.flashTimer += deltaTime;
 
