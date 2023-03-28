@@ -53,7 +53,7 @@
 		this.playing = false; // Whether the game is currently in play state.
 		this.crashed = false;
 		this.paused = false;
-		this.inverted = false;
+		this.inverted = this.config.NIGHTMODE ? this.config.NIGHTMODE : false;
 		this.invertTimer = 0;
 		this.resizeTimerId_ = null;
 
@@ -2775,7 +2775,8 @@ function onDocumentLoad() {
 		RESOURCE_TEMPLATE_ID: 'audio-resources',
 		SPEED: parseInt( document.querySelector('.dinogame-shortcode, .wp-block-dinogame-dinogame').getAttribute('data-speed') ),
 		SPEED_DROP_COEFFICIENT: 3,
-		MUTE_AUDIO: document.querySelector('.dinogame-shortcode, .wp-block-dinogame-dinogame').getAttribute('data-mute-audio') === 'true'
+		MUTE_AUDIO: document.querySelector('.dinogame-shortcode, .wp-block-dinogame-dinogame').getAttribute('data-mute-audio') === 'true',
+		NIGHTMODE: true
 	}
 
 	new Runner('.dino-game-wrapper', runnerConfig);
