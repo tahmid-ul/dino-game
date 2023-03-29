@@ -593,26 +593,27 @@
 				}
 
 				// Night mode.
-				if (this.invertTimer > this.config.INVERT_FADE_DURATION) {
-					this.invertTimer = 0;
-					this.invertTrigger = false;
-					this.invert();
-				} else if (this.invertTimer) {
-					this.invertTimer += deltaTime;
-				} else {
-					var actualDistance =
-						this.distanceMeter.getActualDistance(Math.ceil(this.distanceRan));
+				// if (this.invertTimer > this.config.INVERT_FADE_DURATION) {
+				// 	this.invertTimer = 0;
+				// 	this.invertTrigger = false;
+				// 	this.invert();
+				// } else if (this.invertTimer) {
+				// 	this.invertTimer += deltaTime;
+				// } else {
+				// 	var actualDistance =
+				// 		this.distanceMeter.getActualDistance(Math.ceil(this.distanceRan));
+				//
+				// 	if (actualDistance > 0) {
+				// 		this.invertTrigger = !(actualDistance %
+				// 			this.config.INVERT_DISTANCE);
+				//
+				// 		if (this.invertTrigger && this.invertTimer === 0) {
+				// 			this.invertTimer += deltaTime;
+				// 			this.invert();
+				// 		}
+				// 	}
+				// }
 
-					if (actualDistance > 0) {
-						this.invertTrigger = !(actualDistance %
-							this.config.INVERT_DISTANCE);
-
-						if (this.invertTrigger && this.invertTimer === 0) {
-							this.invertTimer += deltaTime;
-							this.invert();
-						}
-					}
-				}
 			}
 
 			if (this.playing || (!this.activated &&
@@ -2249,6 +2250,7 @@
 		this.stars = [];
 		this.drawStars = false;
 		this.placeStars();
+		this.canvasBackground = '#202124';
 	};
 
 	/**
@@ -2268,12 +2270,14 @@
 	NightMode.phases = [140, 120, 100, 60, 40, 20, 0];
 
 	NightMode.prototype = {
+
 		/**
 		 * Update moving moon, changing phases.
 		 * @param {boolean} activated Whether night mode is activated.
 		 * @param {number} delta
 		 */
-		update: function (activated, delta) {
+		update: function (activated) {
+
 			// Moon phase.
 			if (activated && this.opacity == 0) {
 				this.currentPhase++;
@@ -2289,6 +2293,7 @@
 			} else if (this.opacity > 0) {
 				this.opacity -= NightMode.config.FADE_SPEED;
 			}
+
 
 			// Set moon positioning.
 			if (this.opacity > 0) {
@@ -2307,6 +2312,14 @@
 				this.placeStars();
 			}
 			this.drawStars = true;
+
+			this.invertColors();
+
+		},
+
+		invertColors: function () {
+			document.querySelector('.dino-game-wrapper:first-of-type').style.backgroundColor = this.canvasBackground;
+			document.querySelector('.dino-game-wrapper .dino-canvas').style.filter = 'invert(0.8)';
 		},
 
 		updateXPos: function (currentPos, speed) {
@@ -2382,7 +2395,7 @@
 		reset: function () {
 			this.currentPhase = 0;
 			this.opacity = 0;
-			this.update(false);
+			this.update(true);
 		}
 
 	};
