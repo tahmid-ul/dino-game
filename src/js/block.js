@@ -29,6 +29,10 @@ registerBlockType( 'dinogame/dinogame', {
 		muteAudio: {
 			type: 'boolean',
 			default: false
+		},
+		saveHighScoreLocalStorage: {
+			type: 'boolean',
+			default: true
 		}
 	},
 	edit( props ) {
@@ -65,6 +69,16 @@ registerBlockType( 'dinogame/dinogame', {
 								setAttributes( attributes );
 							} }
 					    />
+						<ToggleControl
+							label="Save High Score?"
+							help={ props.attributes[ 'saveHighScoreLocalStorage' ] ? 'High Score will be saved in the local storage of the browser.' : 'High Score will reset when browser is closed / refreshed.' }
+							checked={ props.attributes[ 'saveHighScoreLocalStorage' ] }
+							onChange={ (toggle) => {
+								const attributes = {};
+								attributes[ 'saveHighScoreLocalStorage' ] = toggle;
+								setAttributes( attributes );
+							} }
+						/>
     				</PanelBody>
 				</InspectorControls>
 			</Fragment>
@@ -72,7 +86,7 @@ registerBlockType( 'dinogame/dinogame', {
 	},
 	save( props ) {
 		return (
-			<div data-speed={props.attributes['dinoSpeed']} data-mute-audio={props.attributes['muteAudio']}>
+			<div data-speed={props.attributes['dinoSpeed']} data-mute-audio={props.attributes['muteAudio']} data-save-high-score={props.attributes['saveHighScoreLocalStorage']}>
 
 				<div id="dino-game-wrapper" className="dino-game-wrapper">
 					<div className="dino-icon dino-initial-icon" alt=""></div>

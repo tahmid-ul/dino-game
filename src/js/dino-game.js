@@ -40,6 +40,7 @@
 		this.distanceMeter = null;
 		this.distanceRan = 0;
 
+		this.saveHighScoreInLocalStorage = opt_config.SAVE_HIGH_SCORE_IN_LOCAL_STORAGE;
 		this.highestScore = window.localStorage['dino-game-high-score'] ? window.localStorage['dino-game-high-score'] : 0;
 
 		this.time = 0;
@@ -815,7 +816,10 @@
 				this.distanceMeter.setHighScore(this.highestScore);
 
 				// Store the high score (pixel value of distance run) in the local storage
-				window.localStorage['dino-game-high-score'] = this.highestScore;
+				if(this.saveHighScoreInLocalStorage) {
+					window.localStorage['dino-game-high-score'] = this.highestScore;
+					console.log('high score save enabled');
+				}
 			}
 
 			// Reset the time clock.
@@ -2775,7 +2779,8 @@ function onDocumentLoad() {
 		RESOURCE_TEMPLATE_ID: 'audio-resources',
 		SPEED: parseInt( document.querySelector('.dinogame-shortcode, .wp-block-dinogame-dinogame').getAttribute('data-speed') ),
 		SPEED_DROP_COEFFICIENT: 3,
-		MUTE_AUDIO: document.querySelector('.dinogame-shortcode, .wp-block-dinogame-dinogame').getAttribute('data-mute-audio') === 'true'
+		MUTE_AUDIO: document.querySelector('.dinogame-shortcode, .wp-block-dinogame-dinogame').getAttribute('data-mute-audio') === 'true',
+		SAVE_HIGH_SCORE_IN_LOCAL_STORAGE: document.querySelector('.dinogame-shortcode, .wp-block-dinogame-dinogame').getAttribute('data-save-high-score') === 'true'
 	}
 
 	new Runner('.dino-game-wrapper', runnerConfig);

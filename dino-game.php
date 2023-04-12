@@ -56,10 +56,11 @@ function dinogame_shortcode($atts)
 		array(
 			'speed' => '5',
 			'mute_audio' => 'false',
+			'save_high_score' => 'true'
 		), $atts );
 
 	$dinogame_html = '
-		<div data-speed="' . $atts['speed'] . '" data-mute-audio="' . $atts['mute_audio'] . '" class="dinogame-shortcode">
+		<div data-speed="' . $atts['speed'] . '" data-mute-audio="' . $atts['mute_audio'] . '" data-save-high-score="' . $atts['save_high_score'] . '" class="dinogame-shortcode">
 		    <div id="dino-game-wrapper" class="dino-game-wrapper">
 		        <div class="dino-icon dino-initial-icon" alt=""></div>
 		        <div id="dino-game">
