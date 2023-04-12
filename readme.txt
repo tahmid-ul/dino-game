@@ -15,9 +15,9 @@ You can add the Google Chrome dinosaur game anywhere within your site using the 
 
 You can control the speed and mute the audio of the game. If you use Gutenberg block then there is a direct option in the block settings to set the speed and mute the audio.
 
-If you embed the game using shortcode then you can control the speed and audio using attributes in this format - `[dino-game speed="8" mute_audio='true']`
+![Dino game demo](https://github.com/tahmid-ul/dino-game/blob/main/src/img/dino-game-demo.gif)
 
-![Dino game demo](/src/img/dino-game-demo.gif)
+If you embed the game using shortcode then you can control the speed and audio using attributes in this format - `[dino-game speed="8" mute_audio='true']`
 
 == How to play ==
 * Use the space bar or up key on your keyboard to jump over the obstacles.
