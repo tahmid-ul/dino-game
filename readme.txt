@@ -11,11 +11,13 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Add the dinosaur game from Google Chrome to your site using the Dino Game Gutenberg block or [dino-game] shortcode.
 
 == Description ==
-You can add the Google Chrome dinosaur game anywhere within your site using the Shortcode [dino-game] or you can also add it to a Post or Page using the Gutenberg Block.
+You can add the Google Chrome dinosaur game anywhere within your site using the Shortcode `[dino-game]` or you can also add it to a Post or Page using the Gutenberg Block.
 
 You can control the speed and mute the audio of the game. If you use Gutenberg block then there is a direct option in the block settings to set the speed and mute the audio.
 
-If you embed the game using shortcode then you can control the speed and audio using attributes in this format - [dino-game speed="8" mute_audio='true']
+If you embed the game using shortcode then you can control the speed and audio using attributes in this format - `[dino-game speed="8" mute_audio='true']`
+
+![Dino game demo](/src/img/dino-game-demo.gif)
 
 == How to play ==
 * Use the space bar or up key on your keyboard to jump over the obstacles.
@@ -38,7 +40,7 @@ The game will work on all screen sizes. Users can also play on mobile using touc
 == Screenshots ==
 1. Dino Game block from within the editor
 2. Dino Game added using Shortcode
-3. A view of the dinosaur game added within a post.
+3. A view of the dinosaur game added within a post
 
 == Changelog ==
 = 1.0.0 =
