@@ -1,28 +1,35 @@
 === Dino Game - Embed Google Chrome Dinosaur Game in WordPress ===
 Contributors: tahmidulkarim
 Tags: trex, dinosaur, dino, game, chrome, shortcode, block, gutenberg
-Requires at least: 5.0.0
-Tested up to: 6.1.1
-Requires PHP: 5.6
-Stable tag: 1.0.0
+Requires at least: 5.0
+Tested up to: 6.2
+Requires PHP: 7.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Add the dinosaur game from Google Chrome to your site using the Dino Game Gutenberg block or [dino-game] shortcode.
 
 == Description ==
-You can add the Google Chrome dinosaur game anywhere within your site using the Shortcode `[dino-game]` or you can also add it to a Post or Page using the Gutenberg Block.
+**Introducing the Google Chrome Dinosaur Game plugin for WordPress! With this plugin, you can easily add the popular game to any page, post or widget of your website.**
 
-You can control the speed and mute the audio of the game. If you use Gutenberg block then there is a direct option in the block settings to set the speed and mute the audio.
+To add the game, simply use the shortcode `[dino-game]` anywhere on your site. Alternatively, you can use the dino game Gutenberg block to add it directly to a page or post. 
 
-![Dino game demo](https://github.com/tahmid-ul/dino-game/blob/main/src/img/dino-game-demo.gif)
+With the Gutenberg block, you can easily adjust the game's speed and sound settings (mute audio) using the block's built-in settings. Additionally, you can also choose whether or not to save the high score.
 
-If you embed the game using shortcode then you can control the speed and audio using attributes in this format - `[dino-game speed="8" mute_audio='true']`
+If you prefer to use the shortcode method, you can customize the game's speed and audio settings by including attributes in the following format: `[dino-game speed="8" mute_audio='true']`
 
 == How to play ==
 * Use the space bar or up key on your keyboard to jump over the obstacles.
 * The down key lets you crouch under the overhead obstacles.
 * When viewing from mobile tap on the game area to jump.
+
+== Installation ==
+
+1. Install Dino Game plugin either via the WordPress.org plugin repository or by uploading the files directly to the /wp-content/plugins/ directory.
+2. Activate the plugin through the ‘Plugins’ screen in WordPress.
+3. Create a Page or a Post and add the game using shortcode or using the Gutenberg block.
+5. Need more help? Reach out to the developer here: <a href="mailto:tahmid.cep41@gmail.com">Email</a>, 
 
 == Frequently Asked Questions ==
 = Will the plugin slow down my site? =
@@ -38,10 +45,15 @@ High scores are only saved until the browser tab is closed.
 The game will work on all screen sizes. Users can also play on mobile using touch controls instead of a keyboard.
 
 == Screenshots ==
-1. Dino Game block from within the editor
-2. Dino Game added using Shortcode
-3. A view of the dinosaur game added within a post
+1. Dino Game block editor and preview
+2. Dino Game added using Gutenberg Block
+3. Dino Game added using Shortcode
+4. A view of the dinosaur game added within a post
 
 == Changelog ==
+= 1.1.0 =
+* New Feature: High Score is saved in the browser's local storage. 
+* Added options to control whether High score will be saved or not
+
 = 1.0.0 =
 * Initial release.
