@@ -3,12 +3,12 @@
  * Plugin Name: Dino Game
  * Plugin URI: https://wordpress.org/plugins/dino-game
  * Description: Add the dinosaur game from Google Chrome to your site using the [dino-game] shortcode or using the Gutenberg block.
- * Version: 1.0.0
+ * Version: 1.2.0
  * Author: Tahmid ul Karim
  * Author URI: https://github.com/tahmid-ul
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: dinogame
+ * Text Domain: dino-game
  */
 
 if ( ! defined( 'ABSPATH' ) )  die;
@@ -58,6 +58,16 @@ function dinogame_shortcode($atts)
 			'mute_audio' => 'false',
 			'save_high_score' => 'true'
 		), $atts );
+
+    // Sanitize speed attribute (ensure it's a numeric value)
+    $atts['speed'] = abs((float)sanitize_text_field($atts['speed']));
+    if ($atts['speed'] <= 0) {
+        $atts['speed'] = 5; // Default to 5 if invalid
+    }
+
+    // Sanitize boolean attributes
+    $atts['mute_audio'] = sanitize_text_field($atts['mute_audio']) === 'true' ? 'true' : 'false';
+    $atts['save_high_score'] = sanitize_text_field($atts['save_high_score']) === 'true' ? 'true' : 'false';
 
 	$dinogame_html = '
 		<div data-speed="' . $atts['speed'] . '" data-mute-audio="' . $atts['mute_audio'] . '" data-save-high-score="' . $atts['save_high_score'] . '" class="dinogame-shortcode">
